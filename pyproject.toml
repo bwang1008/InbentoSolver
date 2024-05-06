@@ -5,6 +5,7 @@ description = "Solves a given puzzle from the game Inbento."
 authors = [ {name = "Brian Wang", email = "bwang1008@gmail.com"} ]
 requires-python = ">= 3.8"
 dependencies = [
+	"loguru",
 	"mypy",
 	"pre-commit",
 	"ruff",
