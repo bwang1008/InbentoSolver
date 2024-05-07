@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 class Board:
     """Board class that represents a grid of tiles."""
 
-    def __init__(self: Self, tiles: list[list[Tile]]) -> Self:
+    def __init__(self: Self, tiles: list[list[Tile]]) -> None:
         """Create instance of Board class.
 
         Input is a 2D array of tiles.
