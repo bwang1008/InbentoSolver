@@ -35,13 +35,12 @@ class Move:
         """Apply rotation to move."""
         raise NotImplementedError("Not implemented in base class")
 
-    @abstractmethod
     def is_locked(self: Self) -> bool:
         """Return attribute locked."""
         return self.locked
 
 
-class LiteralMove:
+class LiteralMove(Move):
     """Represents a set of tiles that you can place on the board."""
 
     def __init__(
@@ -53,7 +52,7 @@ class LiteralMove:
 
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]
-    ) -> tuple[Board, Move | None, int]:
+    ) -> tuple[Board, Move | None, bool]:
         """Directly apply the move's tile on top of the existing board tiles."""
         board_copy = board.copy()
 
