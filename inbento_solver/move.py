@@ -37,6 +37,11 @@ class Move:
         """Apply rotation to move."""
         raise NotImplementedError("Not implemented in base class")
 
+    @abstractmethod
+    def is_locked(self: Self) -> bool:
+        """Return attribute locked."""
+        return self.locked
+
 
 class LiteralMove:
     """Represents a set of tiles that you can place on the board."""
