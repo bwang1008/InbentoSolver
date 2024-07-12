@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import TYPE_CHECKING
+from typing import Tuple, TYPE_CHECKING
 
 from typing_extensions import Self
 
@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .board import Board
     from .tiles import Tile
 
+
 class Move:
     """Base class that represents all moves appliable to a board."""
 
@@ -20,7 +21,9 @@ class Move:
         self.locked: bool = locked
 
     @abstractmethod
-    def apply(self: Self, board: Board, start_pos: Tuple[int, int]) -> Tuple[Board, Move, bool]:
+    def apply(
+        self: Self, board: Board, start_pos: Tuple[int, int]
+    ) -> Tuple[Board, Move, bool]:
         """Return a board that is modified from applying the move.
 
         The second return value is any move that can be applied later.
@@ -36,11 +39,15 @@ class Move:
 class LiteralMove:
     """Represents a set of tiles that you can place on the board."""
 
-    def __init__(self: Self, tile_positions: dict[Tuple[int, int], Tile], locked: bool) -> None:
+    def __init__(
+        self: Self, tile_positions: dict[Tuple[int, int], Tile], locked: bool
+    ) -> None:
         self.tile_positions = tile_positions
         self.locked = locked
 
-    def apply(self: Self, board: Board, start_pos: Tuple[int, int]) -> Tuple[Board, Move, int]:
+    def apply(
+        self: Self, board: Board, start_pos: Tuple[int, int]
+    ) -> Tuple[Board, Move, int]:
         board_copy = board.copy()
 
         for pos, tile in self.tile_positions.items():
@@ -54,7 +61,6 @@ class LiteralMove:
 
         return board_copy, None, True
 
-
     def rotate_counter_clockwise(self) -> LiteralMove:
         if self.locked:
             return self
@@ -62,7 +68,8 @@ class LiteralMove:
         max_col = max(col for _, col in self.tile_positions)
 
         new_tile_positions: dict[Tuple[int, int], Tile] = {
-            (max_col - pos[1], pos[0]): tile for pos, tile in self.tile_positions.items()
+            (max_col - pos[1], pos[0]): tile
+            for pos, tile in self.tile_positions.items()
         }
 
         return LiteralMove(new_tile_positions, self.locked)

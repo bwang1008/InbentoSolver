@@ -37,7 +37,6 @@ class Board:
 
         return True
 
-
-    def copy(self: Self) -> 'Board':
-        tiles: list[list[Tile]] = [[tile for tile in row] for row in self.tiles]
+    def copy(self: Self) -> "Board":
+        tiles: list[list[Tile]] = [row.copy() for row in self.tiles]
         return Board(tiles)
