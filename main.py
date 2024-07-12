@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from pathlib import Path  # noqa: TCH003
 
 import typer
 
@@ -10,10 +10,6 @@ from inbento_solver.board import Board
 from inbento_solver.move import LiteralMove, Move
 from inbento_solver.solver import Solver
 from inbento_solver.tiles import Tile
-
-if TYPE_CHECKING:
-    from pathlib import Path
-
 
 app = typer.Typer()
 
