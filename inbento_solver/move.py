@@ -50,6 +50,10 @@ class LiteralMove(Move):
         self.tile_positions = tile_positions
         self.locked = locked
 
+    def __str__(self: Self) -> str:
+        """Representation of move."""
+        return f"LiteralMove({self.tile_positions})"
+
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]
     ) -> tuple[Board, Move | None, bool]:
