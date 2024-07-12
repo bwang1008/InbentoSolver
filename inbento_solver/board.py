@@ -37,6 +37,7 @@ class Board:
 
         return True
 
-    def copy(self: Self) -> "Board":
+    def copy(self: Self) -> Board:
+        """Create a copy of the board's contents."""
         tiles: list[list[Tile]] = [row.copy() for row in self.tiles]
         return Board(tiles)

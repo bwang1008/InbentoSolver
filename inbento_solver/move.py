@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Tuple, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from typing_extensions import Self
 
@@ -18,12 +18,13 @@ class Move:
     """Base class that represents all moves appliable to a board."""
 
     def __init__(self: Self, locked: bool) -> None:
+        """Store information about what a move can do to a board."""
         self.locked: bool = locked
 
     @abstractmethod
     def apply(
-        self: Self, board: Board, start_pos: Tuple[int, int]
-    ) -> Tuple[Board, Move, bool]:
+        self: Self, board: Board, start_pos: tuple[int, int]
+    ) -> tuple[Board, Move, bool]:
         """Return a board that is modified from applying the move.
 
         The second return value is any move that can be applied later.
@@ -32,7 +33,8 @@ class Move:
         raise NotImplementedError("Not implemented in base class")
 
     @abstractmethod
-    def rotate_counter_clockwise(self: Self) -> None:
+    def rotate_counter_clockwise(self: Self) -> Move:
+        """Apply rotation to move."""
         raise NotImplementedError("Not implemented in base class")
 
 
@@ -40,14 +42,16 @@ class LiteralMove:
     """Represents a set of tiles that you can place on the board."""
 
     def __init__(
-        self: Self, tile_positions: dict[Tuple[int, int], Tile], locked: bool
+        self: Self, tile_positions: dict[tuple[int, int], Tile], locked: bool
     ) -> None:
+        """Hold which (row, col) positions hold which tiles."""
         self.tile_positions = tile_positions
         self.locked = locked
 
     def apply(
-        self: Self, board: Board, start_pos: Tuple[int, int]
-    ) -> Tuple[Board, Move, int]:
+        self: Self, board: Board, start_pos: tuple[int, int]
+    ) -> tuple[Board, Move, int]:
+        """Directly apply the move's tile on top of the existing board tiles."""
         board_copy = board.copy()
 
         for pos, tile in self.tile_positions.items():
@@ -61,13 +65,14 @@ class LiteralMove:
 
         return board_copy, None, True
 
-    def rotate_counter_clockwise(self) -> LiteralMove:
+    def rotate_counter_clockwise(self: Self) -> LiteralMove:
+        """Turn the set of tiles in the move."""
         if self.locked:
             return self
 
         max_col = max(col for _, col in self.tile_positions)
 
-        new_tile_positions: dict[Tuple[int, int], Tile] = {
+        new_tile_positions: dict[tuple[int, int], Tile] = {
             (max_col - pos[1], pos[0]): tile
             for pos, tile in self.tile_positions.items()
         }
