@@ -24,7 +24,7 @@ class Move:
     @abstractmethod
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]
-    ) -> tuple[Board, Move, bool]:
+    ) -> tuple[Board, Move | None, bool]:
         """Return a board that is modified from applying the move.
 
         The second return value is any move that can be applied later.
@@ -50,7 +50,7 @@ class LiteralMove:
 
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]
-    ) -> tuple[Board, Move, int]:
+    ) -> tuple[Board, Move | None, int]:
         """Directly apply the move's tile on top of the existing board tiles."""
         board_copy = board.copy()
 
