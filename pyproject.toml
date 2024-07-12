@@ -33,36 +33,36 @@ target-version = "py38"
 # See https://docs.astral.sh/ruff/rules/
 # and "ruff linter -v"
 select = [
-	"F",	# Pyflakes
-	"E",	# pycodestyle
-	"W",	# pycodestyle
-	"I",	# isort
-	"D",	# pydocstyle
-	"UP",	# pyupgrade
-	"YTT",	# flake8-2020
-	"ANN",	# flake8-annotations
-	"A",		# flake8-builtins
-	"C4",	# flake8-comprehensions
-	"FA",	# flake8-future-annotations
-	"Q",		# flake8-quotes
-	"RSE",	# flake8-raise
-	"RET",	# flake8-return
-	"SLF",	# flake8-self
-	"SIM",	# flake8-simplify
-	"TID",	# flake8-tidy-imports
-	"TCH",	# flake8-type-checking
-	"INT",	# flake8-gettext
-	"ARG",	# flake8-unused-arguments
-	"PTH",	# flake8-use-pathlib
-	"ERA",	# eradicate
-	"PGH",	# pygrep-hooks
-	"PL",	# Pylint
-	"R",	# Refactor
-	"RUF",	# Ruff-specific rules
+	"F",    # Pyflakes
+	"E",    # pycodestyle
+	"W",    # pycodestyle
+	"I",    # isort
+	"D",    # pydocstyle
+	"UP",   # pyupgrade
+	"YTT",  # flake8-2020
+	"ANN",  # flake8-annotations
+	"A",    # flake8-builtins
+	"C4",   # flake8-comprehensions
+	"FA",   # flake8-future-annotations
+	"Q",    # flake8-quotes
+	"RSE",  # flake8-raise
+	"RET",  # flake8-return
+	"SLF",  # flake8-self
+	"SIM",  # flake8-simplify
+	"TID",  # flake8-tidy-imports
+	"TCH",  # flake8-type-checking
+	"INT",  # flake8-gettext
+	"ARG",  # flake8-unused-arguments
+	"PTH",  # flake8-use-pathlib
+	"ERA",  # eradicate
+	"PGH",  # pygrep-hooks
+	"PL",   # Pylint
+	"R",    # Refactor
+	"RUF",  # Ruff-specific rules
 ]
 ignore = [
-	"D203",		# one-blank-line-before-class incompatible with D211
-	"D213",		# multi-line-summary-second-line incompatible with D212
+	"D203", # one-blank-line-before-class incompatible with D211
+	"D213", # multi-line-summary-second-line incompatible with D212
 ]
 
 fixable = ["ALL"]
