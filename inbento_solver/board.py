@@ -41,3 +41,7 @@ class Board:
         """Create a copy of the board's contents."""
         tiles: list[list[Tile]] = [row.copy() for row in self.tiles]
         return Board(tiles)
+
+    def is_valid_position(self: Self, row: int, col: int) -> bool:
+        """Determine if a given (row, col) fits within bounds of the board."""
+        return 0 <= row < self.R and 0 <= col < self.C

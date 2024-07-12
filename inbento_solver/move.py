@@ -7,8 +7,6 @@ from typing import TYPE_CHECKING
 
 from typing_extensions import Self
 
-from inbento_solver.utils import is_valid_position
-
 if TYPE_CHECKING:
     from .board import Board
     from .tiles import Tile
@@ -63,7 +61,7 @@ class LiteralMove:
             row: int = pos[0] + start_pos[0]
             col: int = pos[1] + start_pos[1]
 
-            if not is_valid_position(row, col):
+            if not board.is_valid_position(row, col):
                 return board, None, False
 
             board_copy.tiles[row][col] = tile
