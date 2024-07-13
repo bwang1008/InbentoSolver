@@ -13,11 +13,12 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-def parse_level(level_path: Path) -> tuple[Board, Board, list[Move]]:
+def parse_level(level_path: Path) -> tuple[str, Board, Board, list[Move]]:
     """Extract level data from JSON file."""
     with level_path.open(mode="r", encoding="utf-8") as level_file:
         level_info = json.load(level_file)
 
+    title: str = level_info["title"]
     start_board: Board = Board(
         [[Tile[tile_info] for tile_info in row] for row in level_info["start"]]
     )
@@ -47,4 +48,4 @@ def parse_level(level_path: Path) -> tuple[Board, Board, list[Move]]:
 
             moves.append(LiteralMove(tile_positions, locked))
 
-    return start_board, finish_board, moves
+    return title, start_board, finish_board, moves

@@ -52,7 +52,10 @@ class LiteralMove(Move):
 
     def __str__(self: Self) -> str:
         """Representation of move."""
-        return f"LiteralMove({self.tile_positions})"
+        nicer_tile_positions: dict[tuple[int, int], str] = {
+            pos: tile.name for pos, tile in self.tile_positions.items()
+        }
+        return f"LiteralMove({nicer_tile_positions})"
 
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]

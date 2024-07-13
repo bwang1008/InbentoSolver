@@ -20,9 +20,7 @@ app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 @app.command()
 def solve(level_file: Path) -> None:
     """Given a level file, find the list of moves that solve the puzzle."""
-    print(f"Searching for file {level_file}")
-
-    start_board, finish_board, moves = parse_level(level_file)
+    title, start_board, finish_board, moves = parse_level(level_file)
     solver: Solver = Solver(start_board, finish_board, moves)
 
     with Progress(
@@ -33,7 +31,7 @@ def solve(level_file: Path) -> None:
         progress.add_task(description="[green]Searching...", total=None)
         history: list[tuple[Move, Move, int, int]] = solver.solve()
 
-    print("History:")
+    print(f"Steps to solve level {title}:")
     for index, move_information in enumerate(history):
         if move_information[0] == move_information[1]:
             print(
