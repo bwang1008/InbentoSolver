@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path  # noqa: TCH003
 
 import typer
+from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from inbento_solver.board import Board
 from inbento_solver.level import parse_level
@@ -21,9 +22,15 @@ def solve(level_file: Path) -> None:
     print(f"Searching for file {level_file}")
 
     start_board, finish_board, moves = parse_level(level_file)
-
     solver: Solver = Solver(start_board, finish_board, moves)
-    history: list[Move] = solver.solve()
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        transient=True,
+    ) as progress:
+        progress.add_task(description="[green]Searching...", total=None)
+        history: list[Move] = solver.solve()
 
     print("History:")
     for index, move in enumerate(history):

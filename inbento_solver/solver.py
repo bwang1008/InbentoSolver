@@ -36,9 +36,7 @@ class Solver:
 
     def solve(self: Self) -> list[Move]:
         """Recursively try any remaining move until a match occurs at the end."""
-        logger.info("Begin search")
         result: bool = self._recursively_try_all_unapplied_moves()
-        logger.info("End search")
         if not result:
             logger.warning("No solution found")
             return []

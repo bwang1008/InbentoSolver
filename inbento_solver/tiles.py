@@ -10,3 +10,4 @@ class Tile(Enum):
     RICE = auto()
     SALMON = auto()
     EGG = auto()
+    EGG_SWIRL = auto()
