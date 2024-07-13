@@ -12,7 +12,7 @@ from inbento_solver.move import LiteralMove, Move
 from inbento_solver.solver import Solver
 from inbento_solver.tiles import Tile
 
-app = typer.Typer()
+app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 
 
 @app.command()
