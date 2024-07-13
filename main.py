@@ -30,11 +30,21 @@ def solve(level_file: Path) -> None:
         transient=True,
     ) as progress:
         progress.add_task(description="[green]Searching...", total=None)
-        history: list[Move] = solver.solve()
+        history: list[tuple[Move, Move, int, int]] = solver.solve()
 
     print("History:")
-    for index, move in enumerate(history):
-        print(f"{index + 1}: {move}")
+    for index, move_information in enumerate(history):
+        if move_information[0] == move_information[1]:
+            print(
+                f"{index + 1}: Apply {move_information[1]} at "
+                f"({move_information[2]}, {move_information[3]})"
+            )
+        else:
+            print(
+                f"{index + 1}: Rotate {move_information[0]} to "
+                "{move_information[1]}; apply at ({move_information[2]}, "
+                "{move_information[3]})"
+            )
 
 
 @app.command()
@@ -48,11 +58,21 @@ def test() -> None:
     ]
 
     solver: Solver = Solver(initial_board, finish_board, moves)
-    history: list[Move] = solver.solve()
+    history: list[tuple[Move, Move, int, int]] = solver.solve()
 
     print("History:")
-    for index, move in enumerate(history):
-        print(f"{index + 1}: {move}")
+    for index, move_information in enumerate(history):
+        if move_information[0] == move_information[1]:
+            print(
+                f"{index + 1}: Apply {move_information[1]} at "
+                f"({move_information[2]}, {move_information[3]})"
+            )
+        else:
+            print(
+                f"{index + 1}: Rotate {move_information[0]} to "
+                "{move_information[1]}; apply at ({move_information[2]}, "
+                "{move_information[3]})"
+            )
 
 
 if __name__ == "__main__":
