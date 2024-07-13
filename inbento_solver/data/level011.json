@@ -1,0 +1,17 @@
+{
+	"title": "011",
+	"start": [
+		["EMPTY"]
+	],
+	"finish": [
+		["RICE"]
+	],
+	"moves": [
+		[
+			"literal",
+			[
+				["RICE"]
+			]
+		]
+	]
+}

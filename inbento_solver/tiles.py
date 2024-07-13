@@ -6,6 +6,7 @@ from enum import Enum, auto
 class Tile(Enum):
     """Tile enumerations."""
 
+    EMPTY = auto()
     RICE = auto()
     SALMON = auto()
     EGG = auto()
