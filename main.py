@@ -19,7 +19,12 @@ app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 
 @app.command()
 def solve(level_file: Path) -> None:
-    """Given a level file, find the list of moves that solve the puzzle."""
+    """Given a level file, find the list of moves that solve the puzzle.
+
+    TODO: Wrap "Path" in Annotated, but currently bug in Python 3.8:
+        this will be fixed when https://github.com/tiangolo/typer/pull/814
+        is in the next release.
+    """
     title, start_board, finish_board, moves = parse_level(level_file)
     solver: Solver = Solver(start_board, finish_board, moves)
 
