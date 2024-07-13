@@ -7,6 +7,7 @@ from pathlib import Path  # noqa: TCH003
 import typer
 
 from inbento_solver.board import Board
+from inbento_solver.level import parse_level
 from inbento_solver.move import LiteralMove, Move
 from inbento_solver.solver import Solver
 from inbento_solver.tiles import Tile
@@ -18,6 +19,15 @@ app = typer.Typer()
 def solve(level_file: Path) -> None:
     """Given a level file, find the list of moves that solve the puzzle."""
     print(f"Searching for file {level_file}")
+
+    start_board, finish_board, moves = parse_level(level_file)
+
+    solver: Solver = Solver(start_board, finish_board, moves)
+    history: list[Move] = solver.solve()
+
+    print("History:")
+    for index, move in enumerate(history):
+        print(f"{index + 1}: {move}")
 
 
 @app.command()

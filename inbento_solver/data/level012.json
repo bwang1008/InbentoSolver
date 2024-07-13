@@ -9,11 +9,13 @@
 		["RICE", "RICE"]
 	],
 	"moves": [
-		[
-			"literal",
-			[
-				["SALMON"]
-			]
-		]
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["SALMON"]
+				]
+			}
+		}
 	]
 }

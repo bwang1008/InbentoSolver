@@ -9,17 +9,21 @@
 		["RICE", "EGG_SWIRL"]
 	],
 	"moves": [
-		[
-			"literal",
-			[
-				["RICE"]
-			]
-		],
-		[
-			"literal",
-			[
-				["EGG_SWIRL"]
-			]
-		]
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["EGG_SWIRL"]
+				]
+			}
+		}
 	]
 }

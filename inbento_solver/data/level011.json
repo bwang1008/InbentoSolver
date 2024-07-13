@@ -7,11 +7,13 @@
 		["RICE"]
 	],
 	"moves": [
-		[
-			"literal",
-			[
-				["RICE"]
-			]
-		]
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"]
+				]
+			}
+		}
 	]
 }
