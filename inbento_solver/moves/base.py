@@ -38,6 +38,12 @@ class Move:
         """Return attribute locked."""
         return self.locked
 
+    @classmethod
+    @abstractmethod
+    def from_json(cls, move_data: dict[str, list[list[str]]]) -> Self:
+        """Parse a move from data from JSON dictionary."""
+        raise NotImplementedError("Not implemented in base class")
+
 
 class MoveDescription:
     """Struct holding all information related to how a move was specifically applied."""
