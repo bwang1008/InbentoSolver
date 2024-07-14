@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, List, cast
 
 from typing_extensions import Self
 
@@ -67,7 +67,7 @@ class LiteralMove(Move):
     ) -> LiteralMove:
         """Parse a literal move from data from JSON dictionary."""
         tile_positions_data: list[list[str]] = cast(
-            list[list[str]], move_data["positions"]
+            List[List[str]], move_data["positions"]
         )
         tile_positions: dict[tuple[int, int], Tile] = {}
 
