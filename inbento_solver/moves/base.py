@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 from typing_extensions import Self
@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from inbento_solver.board import Board
 
 
-class Move:
+class Move(ABC):
     """Base class that represents all moves appliable to a board."""
 
     def __init__(self: Self, locked: bool) -> None:
