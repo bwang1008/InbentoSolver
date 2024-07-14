@@ -131,7 +131,7 @@ class MoveDescription:
 
         ret += (
             f"Apply {self.applied_move} at row {self.row_index},"
-            f"column {self.col_index}"
+            f" column {self.col_index}"
         )
 
         return ret

@@ -12,7 +12,7 @@ from inbento_solver.level import parse_level
 from inbento_solver.solver import Solver
 
 if TYPE_CHECKING:
-    from inbento_solver.move import Move
+    from inbento_solver.move import MoveDescription
 
 app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 
@@ -34,21 +34,11 @@ def solve(level_file: Path) -> None:
         transient=True,
     ) as progress:
         progress.add_task(description="[green]Searching...", total=None)
-        history: list[tuple[Move, Move, int, int]] = solver.solve()
+        history: list[MoveDescription] = solver.solve()
 
     print(f"Steps to solve level {title}:")
     for index, move_information in enumerate(history):
-        if move_information[0] == move_information[1]:
-            print(
-                f"{index + 1}: Apply {move_information[1]} at "
-                f"({move_information[2]}, {move_information[3]})"
-            )
-        else:
-            print(
-                f"{index + 1}: Rotate {move_information[0]} to "
-                "{move_information[1]}; apply at ({move_information[2]}, "
-                "{move_information[3]})"
-            )
+        print(f"{index + 1}: {move_information}")
 
 
 if __name__ == "__main__":

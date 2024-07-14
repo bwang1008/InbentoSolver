@@ -7,6 +7,8 @@ from typing import TYPE_CHECKING
 from loguru import logger
 from typing_extensions import Self
 
+from inbento_solver.move import MoveDescription
+
 if TYPE_CHECKING:
     from inbento_solver.board import Board
     from inbento_solver.move import Move
@@ -32,9 +34,9 @@ class Solver:
         # scratch variables
         self.current_board: Board = start_board.copy()
         self.unapplied_moves: list[Move] = moves.copy()
-        self.history: list[tuple[Move, Move, int, int]] = []
+        self.history: list[MoveDescription] = []
 
-    def solve(self: Self) -> list[tuple[Move, Move, int, int]]:
+    def solve(self: Self) -> list[MoveDescription]:
         """Recursively try any remaining move until a match occurs at the end."""
         result: bool = self._recursively_try_all_unapplied_moves()
         if not result:
@@ -58,7 +60,7 @@ class Solver:
                     rotated_move: Move = derivative_moves[-1].rotate_counter_clockwise()
                     derivative_moves.append(rotated_move)
 
-            for derivative_move in derivative_moves:
+            for rotation_index, derivative_move in enumerate(derivative_moves):
                 # try all spots in the board to apply the operation
                 for row_index in range(self.current_board.R):
                     for col_index in range(self.current_board.C):
@@ -71,7 +73,13 @@ class Solver:
                             continue
 
                         self.history.append(
-                            (move, derivative_move, row_index, col_index)
+                            MoveDescription(
+                                move,
+                                derivative_move,
+                                rotation_index,
+                                row_index,
+                                col_index,
+                            )
                         )
 
                         self.current_board = new_board
