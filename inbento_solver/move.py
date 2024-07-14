@@ -87,3 +87,51 @@ class LiteralMove(Move):
         }
 
         return LiteralMove(new_tile_positions, self.locked)
+
+
+class MoveDescription:
+    """Struct holding all information related to how a move was specifically applied."""
+
+    def __init__(  # noqa: PLR0913
+        self: Self,
+        original_move: Move,
+        applied_move: Move,
+        num_rotations: int,
+        row_index: int,
+        col_index: int,
+    ) -> None:
+        """Take in information on how move was applied.
+
+        For instance, how many times a move/piece was rotated, and which
+        row and column to apply the move on the board.
+        """
+        self.original_move = original_move
+        self.applied_move = applied_move
+        self.num_rotations = num_rotations
+        self.row_index = row_index
+        self.col_index = col_index
+
+    def __str__(self: Self) -> str:
+        """Human-readable text showing how to apply the move."""
+        ret: str = ""
+
+        if self.original_move != self.applied_move:
+            ret = f"Rotate {self.original_move}"
+
+            NUM_CCW_TURN_1 = 1
+            NUM_CCW_TURN_2 = 3
+            NUM_CCW_TURN_3 = 3
+
+            if self.num_rotations == NUM_CCW_TURN_1:
+                ret += " counterclockwise."
+            elif self.num_rotations == NUM_CCW_TURN_2:
+                ret += " clockwise twice."
+            elif self.num_rotations == NUM_CCW_TURN_3:
+                ret += " clockwise."
+
+        ret += (
+            f"Apply {self.applied_move} at row {self.row_index},"
+            f"column {self.col_index}"
+        )
+
+        return ret
