@@ -17,7 +17,7 @@ class LiteralMove(Move):
     """Represents a set of tiles that you can place on the board."""
 
     def __init__(
-        self: Self, tile_positions: dict[tuple[int, int], Tile], locked: bool
+        self: Self, tile_positions: dict[tuple[int, int], Tile], *, locked: bool
     ) -> None:
         """Hold which (row, col) positions hold which tiles."""
         self.tile_positions = tile_positions
@@ -59,7 +59,7 @@ class LiteralMove(Move):
             for pos, tile in self.tile_positions.items()
         }
 
-        return LiteralMove(new_tile_positions, self.locked)
+        return LiteralMove(new_tile_positions, locked=self.locked)
 
     @classmethod
     def from_json(
@@ -79,4 +79,4 @@ class LiteralMove(Move):
         if "locked" in move_data:
             locked = cast(bool, move_data["locked"])
 
-        return cls(tile_positions, locked)
+        return cls(tile_positions, locked=locked)

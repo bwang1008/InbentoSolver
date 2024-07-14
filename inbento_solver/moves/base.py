@@ -16,7 +16,7 @@ T = TypeVar("T", bound="Move")
 class Move(ABC):
     """Base class that represents all moves appliable to a board."""
 
-    def __init__(self: Self, locked: bool) -> None:
+    def __init__(self: Self, *, locked: bool) -> None:
         """Store information about what a move can do to a board."""
         self.locked: bool = locked
 
@@ -29,12 +29,14 @@ class Move(ABC):
         The second return value is any move that can be applied later.
         The third return value indicates if the apply operation was successful.
         """
-        raise NotImplementedError("Not implemented in base class")
+        msg: str = "Not implemented in base class"
+        raise NotImplementedError(msg)
 
     @abstractmethod
     def rotate_counter_clockwise(self: Self) -> Move:
         """Apply rotation to move."""
-        raise NotImplementedError("Not implemented in base class")
+        msg: str = "Not implemented in base class"
+        raise NotImplementedError(msg)
 
     def is_locked(self: Self) -> bool:
         """Return attribute locked."""
@@ -44,7 +46,8 @@ class Move(ABC):
     @abstractmethod
     def from_json(cls: type[T], move_data: dict[str, bool | list[list[str]]]) -> T:
         """Parse a move from data from JSON dictionary."""
-        raise NotImplementedError("Not implemented in base class")
+        msg: str = "Not implemented in base class"
+        raise NotImplementedError(msg)
 
 
 class MoveDescription:
@@ -76,15 +79,15 @@ class MoveDescription:
         if self.original_move != self.applied_move:
             ret = f"Rotate {self.original_move}"
 
-            NUM_CCW_TURN_1 = 1
-            NUM_CCW_TURN_2 = 3
-            NUM_CCW_TURN_3 = 3
+            num_ccw_turn_1 = 1
+            num_ccw_turn_2 = 3
+            num_ccw_turn_3 = 3
 
-            if self.num_rotations == NUM_CCW_TURN_1:
+            if self.num_rotations == num_ccw_turn_1:
                 ret += " counterclockwise."
-            elif self.num_rotations == NUM_CCW_TURN_2:
+            elif self.num_rotations == num_ccw_turn_2:
                 ret += " clockwise twice."
-            elif self.num_rotations == NUM_CCW_TURN_3:
+            elif self.num_rotations == num_ccw_turn_3:
                 ret += " clockwise."
 
         ret += (

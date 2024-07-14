@@ -6,6 +6,7 @@ from pathlib import Path  # noqa: TCH003
 from typing import TYPE_CHECKING
 
 import typer
+from rich import print
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from inbento_solver.level import parse_level
