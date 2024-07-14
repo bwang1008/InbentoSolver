@@ -7,11 +7,11 @@ from typing import TYPE_CHECKING
 from loguru import logger
 from typing_extensions import Self
 
-from inbento_solver.move import MoveDescription
+from inbento_solver.moves.base import MoveDescription
 
 if TYPE_CHECKING:
     from inbento_solver.board import Board
-    from inbento_solver.move import Move
+    from inbento_solver.moves.base import Move
 
 
 class Solver:

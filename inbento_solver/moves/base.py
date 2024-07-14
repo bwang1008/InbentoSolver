@@ -8,8 +8,7 @@ from typing import TYPE_CHECKING
 from typing_extensions import Self
 
 if TYPE_CHECKING:
-    from .board import Board
-    from .tiles import Tile
+    from inbento_solver.board import Board
 
 
 class Move:

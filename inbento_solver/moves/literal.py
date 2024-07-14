@@ -1,5 +1,17 @@
 """Implementation of a move that deposits a specified set of tiles."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from typing_extensions import Self
+
+from inbento_solver.moves.base import Move
+
+if TYPE_CHECKING:
+    from inbento_solver.board import Board
+    from inbento_solver.tiles import Tile
+
 
 class LiteralMove(Move):
     """Represents a set of tiles that you can place on the board."""

@@ -6,11 +6,13 @@ import json
 from typing import TYPE_CHECKING, Dict, List, cast
 
 from inbento_solver.board import Board
-from inbento_solver.move import LiteralMove, Move
+from inbento_solver.moves.literal import LiteralMove
 from inbento_solver.tiles import Tile
 
 if TYPE_CHECKING:
     from pathlib import Path
+
+    from inbento_solver.moves.base import Move
 
 
 def parse_level(level_path: Path) -> tuple[str, Board, Board, list[Move]]:
