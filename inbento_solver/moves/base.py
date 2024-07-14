@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, TypeVar
 
 from typing_extensions import Self
 
 if TYPE_CHECKING:
     from inbento_solver.board import Board
+
+T = TypeVar("T", bound="Move")
 
 
 class Move(ABC):
@@ -40,7 +42,7 @@ class Move(ABC):
 
     @classmethod
     @abstractmethod
-    def from_json(cls, move_data: dict[str, list[list[str]]]) -> Self:
+    def from_json(cls: type[T], move_data: dict[str, bool | list[list[str]]]) -> T:
         """Parse a move from data from JSON dictionary."""
         raise NotImplementedError("Not implemented in base class")
 

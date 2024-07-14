@@ -2,15 +2,15 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 from typing_extensions import Self
 
 from inbento_solver.moves.base import Move
+from inbento_solver.tiles import Tile
 
 if TYPE_CHECKING:
     from inbento_solver.board import Board
-    from inbento_solver.tiles import Tile
 
 
 class LiteralMove(Move):
@@ -60,3 +60,23 @@ class LiteralMove(Move):
         }
 
         return LiteralMove(new_tile_positions, self.locked)
+
+    @classmethod
+    def from_json(
+        cls: type[LiteralMove], move_data: dict[str, bool | list[list[str]]]
+    ) -> LiteralMove:
+        """Parse a literal move from data from JSON dictionary."""
+        tile_positions_data: list[list[str]] = cast(
+            list[list[str]], move_data["positions"]
+        )
+        tile_positions: dict[tuple[int, int], Tile] = {}
+
+        for row_index, row in enumerate(tile_positions_data):
+            for col_index, tile_info in enumerate(row):
+                tile_positions[(row_index, col_index)] = Tile[tile_info]
+
+        locked: bool = False
+        if "locked" in move_data:
+            locked = cast(bool, move_data["locked"])
+
+        return cls(tile_positions, locked)
