@@ -21,12 +21,8 @@ def parse_level(level_path: Path) -> tuple[str, Board, Board, list[Move]]:
         level_info = json.load(level_file)
 
     title: str = level_info["title"]
-    start_board: Board = Board(
-        [[Tile[tile_info] for tile_info in row] for row in level_info["start"]]
-    )
-    finish_board: Board = Board(
-        [[Tile[tile_info] for tile_info in row] for row in level_info["finish"]]
-    )
+    start_board: Board = Board(level_info["start"])
+    finish_board: Board = Board(level_info["finish"])
     moves_info: list[dict[str, str | dict[str, list[list[str]]] | bool]] = level_info[
         "moves"
     ]
