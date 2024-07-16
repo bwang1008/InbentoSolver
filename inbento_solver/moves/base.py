@@ -80,15 +80,15 @@ class MoveDescription:
             ret = f"Rotate {self.original_move}"
 
             num_ccw_turn_1 = 1
-            num_ccw_turn_2 = 3
+            num_ccw_turn_2 = 2
             num_ccw_turn_3 = 3
 
             if self.num_rotations == num_ccw_turn_1:
-                ret += " counterclockwise."
+                ret += " counterclockwise. "
             elif self.num_rotations == num_ccw_turn_2:
-                ret += " clockwise twice."
+                ret += " clockwise twice. "
             elif self.num_rotations == num_ccw_turn_3:
-                ret += " clockwise."
+                ret += " clockwise. "
 
         ret += (
             f"Apply {self.applied_move} at row {self.row_index},"

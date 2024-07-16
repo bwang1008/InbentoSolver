@@ -1,0 +1,29 @@
+{
+	"title": "015",
+	"start": [
+		["EGG_SWIRL", "EGG_SWIRL"],
+		["EGG_SWIRL", "EGG_SWIRL"]
+	],
+	"finish": [
+		["RICE", "EGG_SWIRL"],
+		["EGG_SWIRL", "RICE"]
+	],
+	"moves": [
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"]
+				]
+			}
+		}
+	]
+}

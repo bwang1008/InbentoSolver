@@ -1,0 +1,19 @@
+{
+	"title": "014",
+	"start": [
+		["RICE"]
+	],
+	"finish": [
+		["SALMON"]
+	],
+	"moves": [
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["SALMON"]
+				]
+			}
+		}
+	]
+}

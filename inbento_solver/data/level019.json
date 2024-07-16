@@ -1,0 +1,40 @@
+{
+	"title": "019",
+	"start": [
+		["EMPTY", "EMPTY"],
+		["EMPTY", "EMPTY"]
+	],
+	"finish": [
+		["RICE", "RICE"],
+		["RICE", "RICE"]
+	],
+	"moves": [
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"],
+					["EGG_SWIRL"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"],
+					["RICE"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["EGG_SWIRL"],
+					["RICE"]
+				]
+			}
+		}
+	]
+}
