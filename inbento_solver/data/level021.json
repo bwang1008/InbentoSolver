@@ -1,0 +1,40 @@
+{
+	"title": "021",
+	"start": [
+		["EMPTY", "EMPTY"],
+		["EMPTY", "EMPTY"]
+	],
+	"finish": [
+		["EGG_SWIRL", "EGG_SWIRL"],
+		["EGG_SWIRL", "EGG_SWIRL"]
+	],
+	"moves": [
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["EGG_SWIRL"],
+					["SALMON"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["EGG_SWIRL"],
+					["SALMON"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["EGG_SWIRL", "EGG_SWIRL"]
+				],
+				"locked": true
+			}
+		}
+	]
+}

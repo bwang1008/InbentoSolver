@@ -1,0 +1,41 @@
+{
+	"title": "022",
+	"start": [
+		["EMPTY", "EMPTY"],
+		["EMPTY", "EMPTY"]
+	],
+	"finish": [
+		["RICE", "RICE"],
+		["EGG_SWIRL", "EGG_SWIRL"]
+	],
+	"moves": [
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"],
+					["RICE"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["EGG_SWIRL"],
+					["EGG_SWIRL"]
+				],
+				"locked": true
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["EGG_SWIRL"],
+					["RICE"]
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"title": "023",
+	"start": [
+		["EMPTY", "EMPTY"],
+		["RICE", "EMPTY"]
+	],
+	"finish": [
+		["TOMATO", "RICE"],
+		["RICE", "EGG_SWIRL"]
+	],
+	"moves": [
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["TOMATO"],
+					["TOMATO"]
+				]
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["TOMATO"],
+					["EGG_SWIRL"]
+				],
+				"locked": true
+			}
+		},
+		{
+			"type": "literal",
+			"data": {
+				"positions": [
+					["RICE"]
+				]
+			}
+		}
+	]
+}
