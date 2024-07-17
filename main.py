@@ -13,6 +13,7 @@ from inbento_solver.level import parse_level
 from inbento_solver.solver import Solver
 
 if TYPE_CHECKING:
+    from inbento_solver.level import Level
     from inbento_solver.moves.base import MoveDescription
 
 app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
@@ -26,8 +27,8 @@ def solve(level_file: Path) -> None:
         this will be fixed when https://github.com/tiangolo/typer/pull/814
         is in the next release.
     """
-    title, start_board, finish_board, moves = parse_level(level_file)
-    solver: Solver = Solver(start_board, finish_board, moves)
+    level: Level = parse_level(level_file)
+    solver: Solver = Solver(level.start, level.finish, level.moves)
 
     with Progress(
         SpinnerColumn(),
@@ -37,7 +38,7 @@ def solve(level_file: Path) -> None:
         progress.add_task(description="[green]Searching...", total=None)
         history: list[MoveDescription] = solver.solve()
 
-    print(f"Steps to solve level {title}:")
+    print(f"Steps to solve level {level.title}:")
     for index, move_information in enumerate(history):
         print(f"{index + 1}: {move_information}")
 
