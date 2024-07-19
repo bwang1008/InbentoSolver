@@ -7,10 +7,11 @@ from typing import TYPE_CHECKING
 
 from pydantic import BaseModel
 
+from inbento_solver.board import Board
+
 if TYPE_CHECKING:
     from pathlib import Path
 
-    from inbento_solver.board import Board
     from inbento_solver.moves.base import Move
 
 
