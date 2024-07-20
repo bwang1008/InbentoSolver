@@ -27,6 +27,10 @@ def solve(level_path: Path) -> None:
         this will be fixed when https://github.com/tiangolo/typer/pull/814
         is in the next release.
     """
+    if not level_path.exists():
+        print(f"Level file {level_path} does not exist")
+        raise typer.Abort
+
     with level_path.open(mode="r", encoding="utf-8") as level_file:
         level_info = json.load(level_file)
     level: Level = Level.model_validate(level_info)
