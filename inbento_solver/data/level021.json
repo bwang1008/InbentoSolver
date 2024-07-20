@@ -1,40 +1,39 @@
 {
 	"title": "021",
-	"start": [
-		["EMPTY", "EMPTY"],
-		["EMPTY", "EMPTY"]
-	],
-	"finish": [
-		["EGG_SWIRL", "EGG_SWIRL"],
-		["EGG_SWIRL", "EGG_SWIRL"]
-	],
+	"start": {
+		"tiles": [
+			["EMPTY", "EMPTY"],
+			["EMPTY", "EMPTY"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["EGG_SWIRL", "EGG_SWIRL"],
+			["EGG_SWIRL", "EGG_SWIRL"]
+		]
+	},
 	"moves": [
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["EGG_SWIRL"],
-					["SALMON"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "EGG_SWIRL"},
+				{"pos": [0, 1], "tile": "SALMON"}
+			]
 		},
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["EGG_SWIRL"],
-					["SALMON"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "EGG_SWIRL"},
+				{"pos": [0, 1], "tile": "SALMON"}
+			]
 		},
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["EGG_SWIRL", "EGG_SWIRL"]
-				],
-				"locked": true
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "EGG_SWIRL"},
+				{"pos": [1, 0], "tile": "EGG_SWIRL"}
+			],
+			"locked": true
 		}
 	]
 }

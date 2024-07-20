@@ -1,29 +1,29 @@
 {
 	"title": "013",
-	"start": [
-		["EMPTY", "RICE"],
-		["RICE", "EMPTY"]
-	],
-	"finish": [
-		["RICE", "RICE"],
-		["RICE", "EGG_SWIRL"]
-	],
+	"start": {
+		"tiles": [
+			["EMPTY", "RICE"],
+			["RICE", "EMPTY"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["RICE", "RICE"],
+			["RICE", "EGG_SWIRL"]
+		]
+	},
 	"moves": [
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["RICE"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "RICE"}
+			]
 		},
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["EGG_SWIRL"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "EGG_SWIRL"}
+			]
 		}
 	]
 }

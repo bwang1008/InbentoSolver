@@ -1,19 +1,21 @@
 {
 	"title": "011",
-	"start": [
-		["EMPTY"]
-	],
-	"finish": [
-		["RICE"]
-	],
+	"start": {
+		"tiles": [
+			["EMPTY"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["RICE"]
+		]
+	},
 	"moves": [
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["RICE"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "RICE"}
+			]
 		}
 	]
 }

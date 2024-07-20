@@ -1,21 +1,23 @@
 {
 	"title": "012",
-	"start": [
-		["RICE", "EMPTY"],
-		["RICE", "RICE"]
-	],
-	"finish": [
-		["RICE", "SALMON"],
-		["RICE", "RICE"]
-	],
+	"start": {
+		"tiles": [
+			["RICE", "EMPTY"],
+			["RICE", "RICE"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["RICE", "SALMON"],
+			["RICE", "RICE"]
+		]
+	},
 	"moves": [
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["SALMON"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "SALMON"}
+			]
 		}
 	]
 }

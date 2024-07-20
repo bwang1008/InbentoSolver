@@ -1,22 +1,24 @@
 {
 	"title": "016",
-	"start": [
-		["RICE", "EMPTY"],
-		["RICE", "EMPTY"]
-	],
-	"finish": [
-		["RICE", "SALMON"],
-		["RICE", "SALMON"]
-	],
+	"start": {
+		"tiles": [
+			["RICE", "EMPTY"],
+			["RICE", "EMPTY"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["RICE", "SALMON"],
+			["RICE", "SALMON"]
+		]
+	},
 	"moves": [
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["SALMON"],
-					["SALMON"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "SALMON"},
+				{"pos": [0, 1], "tile": "SALMON"}
+			]
 		}
 	]
 }

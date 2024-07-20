@@ -1,40 +1,38 @@
 {
 	"title": "019",
-	"start": [
-		["EMPTY", "EMPTY"],
-		["EMPTY", "EMPTY"]
-	],
-	"finish": [
-		["RICE", "RICE"],
-		["RICE", "RICE"]
-	],
+	"start": {
+		"tiles": [
+			["EMPTY", "EMPTY"],
+			["EMPTY", "EMPTY"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["RICE", "RICE"],
+			["RICE", "RICE"]
+		]
+	},
 	"moves": [
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["RICE"],
-					["EGG_SWIRL"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "RICE"},
+				{"pos": [0, 1], "tile": "EGG_SWIRL"}
+			]
 		},
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["RICE"],
-					["RICE"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "RICE"},
+				{"pos": [0, 1], "tile": "RICE"}
+			]
 		},
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["EGG_SWIRL"],
-					["RICE"]
-				]
-			}
+			"positions": [
+				{"pos": [0, 0], "tile": "EGG_SWIRL"},
+				{"pos": [0, 1], "tile": "RICE"}
+			]
 		}
 	]
 }

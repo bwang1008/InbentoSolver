@@ -16,37 +16,22 @@
 		{
 			"move_type": "literal",
 			"positions": [
-				{
-					"pos": [0, 0],
-					"tile": "TOMATO"
-				},
-				{
-					"pos": [0, 1],
-					"tile": "TOMATO"
-				}
+				{"pos": [0, 0], "tile": "TOMATO"},
+				{"pos": [0, 1], "tile": "TOMATO"}
 			]
 		},
 		{
 			"move_type": "literal",
 			"positions": [
-				{
-					"pos": [0, 0],
-					"tile": "TOMATO"
-				},
-				{
-					"pos": [0, 1],
-					"tile": "EGG_SWIRL"
-				}
+				{"pos": [0, 0], "tile": "TOMATO"},
+				{"pos": [0, 1], "tile": "EGG_SWIRL"}
 			],
 			"locked": true
 		},
 		{
 			"move_type": "literal",
 			"positions": [
-				{
-					"pos": [0, 0],
-					"tile": "RICE"
-				}
+				{"pos": [0, 0], "tile": "RICE"}
 			]
 		}
 	]
