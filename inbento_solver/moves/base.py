@@ -45,13 +45,12 @@ class Move(ABC, BaseModel):
 class MoveDescription:
     """Struct holding all information related to how a move was specifically applied."""
 
-    def __init__(  # noqa: PLR0913
+    def __init__(
         self: Self,
         original_move: Move,
         applied_move: Move,
         num_rotations: int,
-        row_index: int,
-        col_index: int,
+        pos: tuple[int, int],
     ) -> None:
         """Take in information on how move was applied.
 
@@ -61,8 +60,7 @@ class MoveDescription:
         self.original_move = original_move
         self.applied_move = applied_move
         self.num_rotations = num_rotations
-        self.row_index = row_index
-        self.col_index = col_index
+        self.pos = pos
 
     def __str__(self: Self) -> str:
         """Human-readable text showing how to apply the move."""
@@ -82,9 +80,6 @@ class MoveDescription:
             elif self.num_rotations == num_ccw_turn_3:
                 ret += " clockwise. "
 
-        ret += (
-            f"Apply {self.applied_move} at row {self.row_index},"
-            f" column {self.col_index}"
-        )
+        ret += f"Apply {self.applied_move} at row {self.pos[0]}, column {self.pos[1]}"
 
         return ret

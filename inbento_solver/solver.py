@@ -78,8 +78,7 @@ class Solver:
                                 move,
                                 derivative_move,
                                 rotation_index,
-                                row_index,
-                                col_index,
+                                (row_index, col_index),
                             )
                         )
 
