@@ -33,7 +33,7 @@ class Solver:
         self.finish_board: Board = finish_board
         self.initial_moves: list[MoveSubtypesT] = moves
         # scratch variables
-        self.current_board: Board = start_board.copy()
+        self.current_board: Board = start_board.model_copy(deep=True)
         self.unapplied_moves: list[MoveSubtypesT] = moves.copy()
         self.history: list[MoveDescription] = []
 
@@ -65,7 +65,7 @@ class Solver:
                 # try all spots in the board to apply the operation
                 for row_index in range(len(self.current_board.tiles)):
                     for col_index in range(len(self.current_board.tiles[row_index])):
-                        before_board: Board = self.current_board.copy()
+                        before_board: Board = self.current_board.model_copy(deep=True)
                         new_board, remaining_move, successful = derivative_move.apply(
                             self.current_board,
                             (row_index, col_index),
