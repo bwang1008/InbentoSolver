@@ -10,7 +10,7 @@
 	],
 	"moves": [
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{
 					"pos": [0, 0],
@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{
 					"pos": [0, 0],
@@ -37,7 +37,7 @@
 			"locked": true
 		},
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{
 					"pos": [0, 0],
