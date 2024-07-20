@@ -3,15 +3,13 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, TypeVar
+from typing import TYPE_CHECKING
 
 from pydantic import BaseModel
 from typing_extensions import Self
 
 if TYPE_CHECKING:
     from inbento_solver.board import Board
-
-T = TypeVar("T", bound="Move")
 
 
 class Move(ABC, BaseModel):
