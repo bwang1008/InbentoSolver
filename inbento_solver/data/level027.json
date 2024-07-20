@@ -1,0 +1,39 @@
+{
+	"title": "027",
+	"start": {
+		"tiles": [
+			["EMPTY", "EMPTY", "EMPTY"],
+			["EMPTY", "EMPTY", "EMPTY"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["TOMATO", "RICE", "RICE"],
+			["TOMATO", "SALMON", "SALMON"]
+		]
+	},
+	"moves": [
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 0], "tile": "TOMATO"},
+				{"pos": [1, 0], "tile": "RICE"}
+			]
+		},
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 0], "tile": "TOMATO"},
+				{"pos": [2, 0], "tile": "SALMON"}
+			]
+		},
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 0], "tile": "TOMATO"},
+				{"pos": [0, 1], "tile": "RICE"},
+				{"pos": [1, 1], "tile": "SALMON"}
+			]
+		}
+	]
+}

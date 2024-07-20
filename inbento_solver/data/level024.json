@@ -1,0 +1,25 @@
+{
+	"title": "024",
+	"start": {
+		"tiles": [
+			["RICE", "RICE"],
+			["RICE", "RICE"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["TOMATO", "TOMATO"],
+			["RICE", "TOMATO"]
+		]
+	},
+	"moves": [
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 1], "tile": "TOMATO"},
+				{"pos": [1, 0], "tile": "TOMATO"},
+				{"pos": [1, 1], "tile": "TOMATO"}
+			]
+		}
+	]
+}

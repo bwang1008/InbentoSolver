@@ -1,0 +1,45 @@
+{
+	"title": "028",
+	"start": {
+		"tiles": [
+			["EMPTY", "EMPTY", "EMPTY"],
+			["EMPTY", "EMPTY", "EMPTY"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["EGG_SWIRL", "SALMON", "EGG_SWIRL"],
+			["RICE", "RICE", "RICE"]
+		]
+	},
+	"moves": [
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 1], "tile": "RICE"},
+				{"pos": [1, 0], "tile": "RICE"}
+			]
+		},
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 1], "tile": "RICE"},
+				{"pos": [1, 0], "tile": "SALMON"}
+			]
+		},
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 1], "tile": "EGG_SWIRL"},
+				{"pos": [1, 0], "tile": "RICE"}
+			]
+		},
+		{
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 1], "tile": "EGG_SWIRL"},
+				{"pos": [1, 0], "tile": "EGG_SWIRL"}
+			]
+		}
+	]
+}
