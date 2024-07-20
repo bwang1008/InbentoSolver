@@ -11,6 +11,7 @@ from inbento_solver.moves.base import MoveDescription
 
 if TYPE_CHECKING:
     from inbento_solver.board import Board
+    from inbento_solver.moves import MoveSubtypesT
     from inbento_solver.moves.base import Move
 
 
@@ -18,7 +19,7 @@ class Solver:
     """Solver class that tries all remaining moves."""
 
     def __init__(
-        self: Self, start_board: Board, finish_board: Board, moves: list[Move]
+        self: Self, start_board: Board, finish_board: Board, moves: list[MoveSubtypesT]
     ) -> None:
         """Take in a level's inputs.
 
@@ -30,10 +31,10 @@ class Solver:
         """
         self.start_board: Board = start_board
         self.finish_board: Board = finish_board
-        self.initial_moves: list[Move] = moves
+        self.initial_moves: list[MoveSubtypesT] = moves
         # scratch variables
         self.current_board: Board = start_board.copy()
-        self.unapplied_moves: list[Move] = moves.copy()
+        self.unapplied_moves: list[MoveSubtypesT] = moves.copy()
         self.history: list[MoveDescription] = []
 
     def solve(self: Self) -> list[MoveDescription]:

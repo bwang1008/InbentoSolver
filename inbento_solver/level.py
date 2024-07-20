@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, List
 from pydantic import BaseModel
 
 from inbento_solver.board import Board  # noqa: TCH001
-from inbento_solver.moves.base import Move  # noqa: TCH001
+from inbento_solver.moves import MoveSubtypesT  # noqa: TCH001
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -20,7 +20,7 @@ class Level(BaseModel):
     title: str
     start: Board
     finish: Board
-    moves: List[Move]  # noqa: UP006
+    moves: List[MoveSubtypesT]  # noqa: UP006
 
 
 def parse_level(level_path: Path) -> Level:

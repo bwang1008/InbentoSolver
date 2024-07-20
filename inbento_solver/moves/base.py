@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Optional, TypeVar
+from typing import TYPE_CHECKING, TypeVar
 
 from pydantic import BaseModel
 from typing_extensions import Self
@@ -17,7 +17,7 @@ T = TypeVar("T", bound="Move")
 class Move(ABC, BaseModel):
     """Base class that represents all moves appliable to a board."""
 
-    locked: Optional[bool]  # noqa: UP007
+    locked: bool = False
 
     @abstractmethod
     def apply(

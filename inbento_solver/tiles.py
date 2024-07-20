@@ -2,21 +2,21 @@
 
 from __future__ import annotations
 
-from enum import Enum, auto
+from enum import Enum
 from typing import Tuple
 
 from pydantic import BaseModel
 
 
-class Tile(Enum):
+class Tile(str, Enum):
     """Tile enumerations."""
 
-    EMPTY = auto()
-    RICE = auto()
-    SALMON = auto()
-    EGG = auto()
-    EGG_SWIRL = auto()
-    TOMATO = auto()
+    EMPTY = "EMPTY"
+    RICE = "RICE"
+    SALMON = "SALMON"
+    EGG = "EGG"
+    EGG_SWIRL = "EGG_SWIRL"
+    TOMATO = "TOMATO"
 
 
 class TilePosition(BaseModel):

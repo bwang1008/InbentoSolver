@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Literal
 
 from typing_extensions import Self
 
@@ -17,8 +17,9 @@ if TYPE_CHECKING:
 class LiteralMove(Move):
     """Represents a set of tiles that you can place on the board."""
 
-    positions: list[TilePosition]
-    locked: bool | None
+    move_kind: Literal["literal"] = "literal"
+    positions: List[TilePosition]  # noqa: UP006
+    locked: bool = False
 
     def __str__(self: Self) -> str:
         """Representation of move."""
