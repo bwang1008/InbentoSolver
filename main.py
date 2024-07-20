@@ -16,7 +16,7 @@ from inbento_solver.solver import Solver
 if TYPE_CHECKING:
     from inbento_solver.moves.base import MoveDescription
 
-app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
+app: typer.Typer = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 
 
 @app.command()
