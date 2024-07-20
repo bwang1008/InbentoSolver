@@ -17,7 +17,7 @@
 			"type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "SALMON"},
-				{"pos": [0, 1], "tile": "SALMON"}
+				{"pos": [1, 0], "tile": "SALMON"}
 			]
 		}
 	]

@@ -17,21 +17,21 @@
 			"type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "EGG_SWIRL"},
-				{"pos": [0, 1], "tile": "SALMON"}
+				{"pos": [1, 0], "tile": "SALMON"}
 			]
 		},
 		{
 			"type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "EGG_SWIRL"},
-				{"pos": [0, 1], "tile": "SALMON"}
+				{"pos": [1, 0], "tile": "SALMON"}
 			]
 		},
 		{
 			"type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "EGG_SWIRL"},
-				{"pos": [1, 0], "tile": "EGG_SWIRL"}
+				{"pos": [0, 1], "tile": "EGG_SWIRL"}
 			],
 			"locked": true
 		}

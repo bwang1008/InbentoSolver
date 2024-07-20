@@ -17,7 +17,7 @@
 			"type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "EGG_SWIRL"},
-				{"pos": [0, 1], "tile": "EGG_SWIRL"}
+				{"pos": [1, 0], "tile": "EGG_SWIRL"}
 			]
 		}
 	]
