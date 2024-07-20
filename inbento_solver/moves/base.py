@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, TypeVar
+from typing import TYPE_CHECKING, Optional, TypeVar
 
+from pydantic import BaseModel
 from typing_extensions import Self
 
 if TYPE_CHECKING:
@@ -13,12 +14,10 @@ if TYPE_CHECKING:
 T = TypeVar("T", bound="Move")
 
 
-class Move(ABC):
+class Move(ABC, BaseModel):
     """Base class that represents all moves appliable to a board."""
 
-    def __init__(self: Self, *, locked: bool) -> None:
-        """Store information about what a move can do to a board."""
-        self.locked: bool = locked
+    locked: Optional[bool]  # noqa: UP007
 
     @abstractmethod
     def apply(
@@ -40,14 +39,7 @@ class Move(ABC):
 
     def is_locked(self: Self) -> bool:
         """Return attribute locked."""
-        return self.locked
-
-    @classmethod
-    @abstractmethod
-    def from_json(cls: type[T], move_data: dict[str, bool | list[list[str]]]) -> T:
-        """Parse a move from data from JSON dictionary."""
-        msg: str = "Not implemented in base class"
-        raise NotImplementedError(msg)
+        return bool(self.locked)
 
 
 class MoveDescription:

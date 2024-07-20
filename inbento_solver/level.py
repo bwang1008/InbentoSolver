@@ -3,16 +3,15 @@
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from pydantic import BaseModel
 
-from inbento_solver.board import Board
+from inbento_solver.board import Board  # noqa: TCH001
+from inbento_solver.moves.base import Move  # noqa: TCH001
 
 if TYPE_CHECKING:
     from pathlib import Path
-
-    from inbento_solver.moves.base import Move
 
 
 class Level(BaseModel):
@@ -21,7 +20,7 @@ class Level(BaseModel):
     title: str
     start: Board
     finish: Board
-    moves: list[Move]
+    moves: List[Move]  # noqa: UP006
 
 
 def parse_level(level_path: Path) -> Level:

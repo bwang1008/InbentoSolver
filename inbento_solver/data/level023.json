@@ -11,30 +11,39 @@
 	"moves": [
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["TOMATO"],
-					["TOMATO"]
-				]
-			}
+			"positions": [
+				{
+					"pos": [0, 0],
+					"tile": "TOMATO"
+				},
+				{
+					"pos": [0, 1],
+					"tile": "TOMATO"
+				}
+			]
 		},
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["TOMATO"],
-					["EGG_SWIRL"]
-				],
-				"locked": true
-			}
+			"positions": [
+				{
+					"pos": [0, 0],
+					"tile": "TOMATO"
+				},
+				{
+					"pos": [0, 1],
+					"tile": "EGG_SWIRL"
+				}
+			],
+			"locked": true
 		},
 		{
 			"type": "literal",
-			"data": {
-				"positions": [
-					["RICE"]
-				]
-			}
+			"positions": [
+				{
+					"pos": [0, 0],
+					"tile": "RICE"
+				}
+			]
 		}
 	]
 }

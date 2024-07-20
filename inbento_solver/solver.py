@@ -62,8 +62,8 @@ class Solver:
 
             for rotation_index, derivative_move in enumerate(derivative_moves):
                 # try all spots in the board to apply the operation
-                for row_index in range(self.current_board.R):
-                    for col_index in range(self.current_board.C):
+                for row_index in range(len(self.current_board.tiles)):
+                    for col_index in range(len(self.current_board.tiles[row_index])):
                         before_board: Board = self.current_board.copy()
                         new_board, remaining_move, successful = derivative_move.apply(
                             self.current_board,

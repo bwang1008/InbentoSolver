@@ -2,41 +2,41 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, cast
+from typing import TYPE_CHECKING
 
 from typing_extensions import Self
 
 from inbento_solver.moves.base import Move
-from inbento_solver.tiles import Tile
+from inbento_solver.tiles import TilePosition
 
 if TYPE_CHECKING:
     from inbento_solver.board import Board
+    from inbento_solver.tiles import Tile
 
 
 class LiteralMove(Move):
     """Represents a set of tiles that you can place on the board."""
 
-    def __init__(
-        self: Self, tile_positions: dict[tuple[int, int], Tile], *, locked: bool
-    ) -> None:
-        """Hold which (row, col) positions hold which tiles."""
-        self.tile_positions = tile_positions
-        self.locked = locked
+    positions: list[TilePosition]
+    locked: bool | None
 
     def __str__(self: Self) -> str:
         """Representation of move."""
-        nicer_tile_positions: dict[tuple[int, int], str] = {
-            pos: tile.name for pos, tile in self.tile_positions.items()
+        nicer_positions: dict[tuple[int, int], str] = {
+            tile_position.pos: tile_position.tile.name
+            for tile_position in self.positions
         }
-        return f"LiteralMove({nicer_tile_positions})"
+        return f"LiteralMove({nicer_positions})"
 
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]
     ) -> tuple[Board, Move | None, bool]:
         """Directly apply the move's tile on top of the existing board tiles."""
-        board_copy = board.copy()
+        board_copy = board.model_copy(deep=True)
 
-        for pos, tile in self.tile_positions.items():
+        for tile_position in self.positions:
+            pos: tuple[int, int] = tile_position.pos
+            tile: Tile = tile_position.tile
             row: int = pos[0] + start_pos[0]
             col: int = pos[1] + start_pos[1]
 
@@ -52,31 +52,16 @@ class LiteralMove(Move):
         if self.locked:
             return self
 
-        max_col = max(col for _, col in self.tile_positions)
+        max_col: int = max(tile_position.pos[1] for tile_position in self.positions)
 
-        new_tile_positions: dict[tuple[int, int], Tile] = {
-            (max_col - pos[1], pos[0]): tile
-            for pos, tile in self.tile_positions.items()
-        }
+        new_positions: list[TilePosition] = []
+        for tile_position in self.positions:
+            pos: tuple[int, int] = tile_position.pos
+            tile: Tile = tile_position.tile
 
-        return LiteralMove(new_tile_positions, locked=self.locked)
+            new_tile_position: TilePosition = TilePosition(
+                pos=(max_col - pos[1], pos[0]), tile=tile
+            )
+            new_positions.append(new_tile_position)
 
-    @classmethod
-    def from_json(
-        cls: type[LiteralMove], move_data: dict[str, bool | list[list[str]]]
-    ) -> LiteralMove:
-        """Parse a literal move from data from JSON dictionary."""
-        tile_positions_data: list[list[str]] = cast(
-            List[List[str]], move_data["positions"]
-        )
-        tile_positions: dict[tuple[int, int], Tile] = {}
-
-        for row_index, row in enumerate(tile_positions_data):
-            for col_index, tile_info in enumerate(row):
-                tile_positions[(row_index, col_index)] = Tile[tile_info]
-
-        locked: bool = False
-        if "locked" in move_data:
-            locked = cast(bool, move_data["locked"])
-
-        return cls(tile_positions, locked=locked)
+        return LiteralMove(positions=new_positions, locked=self.locked)
