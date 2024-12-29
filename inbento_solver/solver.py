@@ -65,7 +65,6 @@ class Solver:
                 # try all spots in the board to apply the operation
                 for row_index in range(len(self.current_board.tiles)):
                     for col_index in range(len(self.current_board.tiles[row_index])):
-                        before_board: Board = self.current_board.model_copy(deep=True)
                         new_board, remaining_move, successful = derivative_move.apply(
                             self.current_board,
                             (row_index, col_index),
@@ -82,6 +81,7 @@ class Solver:
                             )
                         )
 
+                        before_board: Board = self.current_board
                         self.current_board = new_board
                         search_result: bool = (
                             self._recursively_try_all_unapplied_moves()
