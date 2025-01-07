@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path  # noqa: TCH003
+from pathlib import Path  # noqa: TC003
 from typing import TYPE_CHECKING
 
 import typer
-from rich import print
+from rich import print as rprint
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from inbento_solver.level import Level
@@ -28,7 +28,7 @@ def solve(level_path: Path) -> None:
         is in the next release.
     """
     if not level_path.exists():
-        print(f"Level file {level_path} does not exist")
+        rprint(f"Level file {level_path} does not exist")
         raise typer.Abort
 
     with level_path.open(mode="r", encoding="utf-8") as level_file:
@@ -44,9 +44,9 @@ def solve(level_path: Path) -> None:
         progress.add_task(description="[green]Searching...", total=None)
         history: list[MoveDescription] = solver.solve()
 
-    print(f"Steps to solve level {level.title}:")
+    rprint(f"Steps to solve level {level.title}:")
     for index, move_information in enumerate(history):
-        print(f"{index + 1}: {move_information}")
+        rprint(f"{index + 1}: {move_information}")
 
 
 if __name__ == "__main__":

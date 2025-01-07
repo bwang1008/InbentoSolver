@@ -7,7 +7,7 @@ from typing import List
 from pydantic import BaseModel
 from typing_extensions import Self
 
-from inbento_solver.tiles import Tile  # noqa: TCH001
+from inbento_solver.tiles import Tile  # noqa: TC001
 
 
 class Board(BaseModel):
