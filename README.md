@@ -9,7 +9,8 @@ To install,
 ```bash
 python3 -m venv .venv			# create virtual environment
 source .venv/bin/activate		# use virtual environment
-pip3 install -r requirements.txt  # install third-party libraries
+pip3 install uv
+uv sync
 ```
 
 ## Usage
