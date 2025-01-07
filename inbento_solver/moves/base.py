@@ -55,6 +55,15 @@ class MoveBase(ABC, BaseModel):
             move_type=self.move_type, positions=new_positions, locked=self.locked
         )
 
+    def distinct_rotations(self) -> list[tuple[MoveBase, int]]:
+        """Return all rotations of the current move that are distinct."""
+        distinct_moves: list[tuple[MoveBase, int]] = [(self, 0)]
+        while (
+            next_move := distinct_moves[-1][0].rotate_counter_clockwise()
+        ) != distinct_moves[0][0]:
+            distinct_moves.append((next_move, 1 + distinct_moves[-1][1]))
+        return distinct_moves
+
     def is_locked(self: Self) -> bool:
         """Return attribute locked."""
         return bool(self.locked)

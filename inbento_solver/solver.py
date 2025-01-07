@@ -12,7 +12,6 @@ from inbento_solver.moves.base import MoveDescription
 if TYPE_CHECKING:
     from inbento_solver.board import Board
     from inbento_solver.moves import MoveSubtypesT
-    from inbento_solver.moves.base import MoveBase
 
 
 class Solver:
@@ -54,16 +53,7 @@ class Solver:
         for move in self.unapplied_moves.copy():
             self.unapplied_moves.remove(move)
 
-            # try all rotations of move as well
-            derivative_moves: list[MoveBase] = [move]
-            if not move.is_locked():
-                for _ in range(4):
-                    rotated_move: MoveBase = derivative_moves[
-                        -1
-                    ].rotate_counter_clockwise()
-                    derivative_moves.append(rotated_move)
-
-            for rotation_index, derivative_move in enumerate(derivative_moves):
+            for derivative_move, rotation_index in move.distinct_rotations():
                 # try all spots in the board to apply the operation
                 for row_index in range(len(self.current_board.tiles)):
                     for col_index in range(len(self.current_board.tiles[row_index])):
