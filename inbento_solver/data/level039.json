@@ -1,0 +1,47 @@
+{
+	"title": "039",
+	"start": {
+		"tiles": [
+			["SPINACH", "STICKY_RICE", "SPINACH"],
+            ["STICKY_RICE", "STICKY_RICE", "YELLOWFISH"],
+            ["SPINACH", "CHESTNUT", "CHESTNUT"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["SPINACH", "STICKY_RICE", "CHESTNUT"],
+            ["YELLOWFISH", "STICKY_RICE", "SPINACH"],
+            ["SPINACH", "STICKY_RICE", "CHESTNUT"]
+		]
+	},
+	"moves": [
+        {
+			"move_type": "swap",
+			"positions": [
+				{"pos": [0, 0], "tile": "SWAP"},
+				{"pos": [1, 0], "tile": "SWAP"}
+			]
+		},
+        {
+			"move_type": "swap",
+			"positions": [
+				{"pos": [0, 0], "tile": "SWAP"},
+				{"pos": [1, 0], "tile": "SWAP"}
+			]
+		},
+        {
+			"move_type": "swap",
+			"positions": [
+				{"pos": [0, 0], "tile": "SWAP"},
+				{"pos": [2, 0], "tile": "SWAP"}
+			]
+		},
+        {
+			"move_type": "swap",
+			"positions": [
+				{"pos": [0, 0], "tile": "SWAP"},
+				{"pos": [2, 0], "tile": "SWAP"}
+			]
+		}
+	]
+}
