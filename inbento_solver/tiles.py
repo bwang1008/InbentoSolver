@@ -19,6 +19,7 @@ class Tile(str, Enum):
     TOMATO = "TOMATO"
     SPINACH = "SPINACH"
     STICKY_RICE = "STICKY_RICE"
+    YELLOWFISH = "YELLOWFISH"
     SWAP = "SWAP"
 
 
