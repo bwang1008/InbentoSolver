@@ -12,15 +12,16 @@ if TYPE_CHECKING:
     from inbento_solver.board import Board
 
 
-class Move(ABC, BaseModel):
+class MoveBase(ABC, BaseModel):
     """Base class that represents all moves appliable to a board."""
 
+    move_type: str
     locked: bool = False
 
     @abstractmethod
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]
-    ) -> tuple[Board, Move | None, bool]:
+    ) -> tuple[Board, MoveBase | None, bool]:
         """Return a board that is modified from applying the move.
 
         The second return value is any move that can be applied later.
@@ -30,7 +31,7 @@ class Move(ABC, BaseModel):
         raise NotImplementedError(msg)
 
     @abstractmethod
-    def rotate_counter_clockwise(self: Self) -> Move:
+    def rotate_counter_clockwise(self: Self) -> MoveBase:
         """Apply rotation to move."""
         msg: str = "Not implemented in base class"
         raise NotImplementedError(msg)
@@ -45,8 +46,8 @@ class MoveDescription:
 
     def __init__(
         self: Self,
-        original_move: Move,
-        applied_move: Move,
+        original_move: MoveBase,
+        applied_move: MoveBase,
         num_rotations: int,
         pos: tuple[int, int],
     ) -> None:

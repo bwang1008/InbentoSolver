@@ -14,14 +14,14 @@
 	},
 	"moves": [
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "RICE"},
 				{"pos": [1, 0], "tile": "SALMON"}
 			]
 		},
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "SALMON"},
 				{"pos": [1, 0], "tile": "RICE"}

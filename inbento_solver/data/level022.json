@@ -14,14 +14,14 @@
 	},
 	"moves": [
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "RICE"},
 				{"pos": [1, 0], "tile": "RICE"}
 			]
 		},
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "EGG_SWIRL"},
 				{"pos": [1, 0], "tile": "EGG_SWIRL"}
@@ -29,7 +29,7 @@
 			"locked": true
 		},
 		{
-			"type": "literal",
+			"move_type": "literal",
 			"positions": [
 				{"pos": [0, 0], "tile": "EGG_SWIRL"},
 				{"pos": [1, 0], "tile": "RICE"}

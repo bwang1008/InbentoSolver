@@ -1,7 +1,30 @@
 """Classes that represent each possible transformation on a Board."""
 
-from typing_extensions import TypeAlias
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Union
+
+from pydantic import Discriminator, Tag
+from typing_extensions import Annotated, TypeAlias
 
 from .literal import LiteralMove
+from .swap import SwapMove
 
-MoveSubtypesT: TypeAlias = LiteralMove
+if TYPE_CHECKING:
+    from inbento_solver.moves.base import MoveBase
+
+
+def get_move_discriminator_value(v: dict | MoveBase) -> str:
+    """Retrieve value of v's move_type that distinguishes moves."""
+    if isinstance(v, dict):
+        return v["move_type"]
+    return v.move_type
+
+
+MoveSubtypesT: TypeAlias = Annotated[
+    Union[
+        Annotated[LiteralMove, Tag("literal")],
+        Annotated[SwapMove, Tag("swap")],
+    ],
+    Discriminator(get_move_discriminator_value),
+]

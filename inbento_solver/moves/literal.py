@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, List, Literal
 
 from typing_extensions import Self
 
-from inbento_solver.moves.base import Move
+from inbento_solver.moves.base import MoveBase
 from inbento_solver.tiles import TilePosition
 
 if TYPE_CHECKING:
@@ -14,12 +14,11 @@ if TYPE_CHECKING:
     from inbento_solver.tiles import Tile
 
 
-class LiteralMove(Move):
+class LiteralMove(MoveBase):
     """Represents a set of tiles that you can place on the board."""
 
-    move_kind: Literal["literal"] = "literal"
+    move_type: Literal["literal"] = "literal"
     positions: List[TilePosition]  # noqa: UP006
-    locked: bool = False
 
     def __str__(self: Self) -> str:
         """Representation of move."""
@@ -31,7 +30,7 @@ class LiteralMove(Move):
 
     def apply(
         self: Self, board: Board, start_pos: tuple[int, int]
-    ) -> tuple[Board, Move | None, bool]:
+    ) -> tuple[Board, MoveBase | None, bool]:
         """Directly apply the move's tile on top of the existing board tiles."""
         board_copy = board.model_copy(deep=True)
 
