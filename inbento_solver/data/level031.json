@@ -1,0 +1,24 @@
+{
+	"title": "031",
+	"start": {
+		"tiles": [
+			["SPINACH"],
+			["STICKY_RICE"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["STICKY_RICE"],
+			["SPINACH"]
+		]
+	},
+	"moves": [
+		{
+			"move_type": "swap",
+			"positions": [
+				{"pos": [0, 0], "tile": "SWAP"},
+				{"pos": [1, 0], "tile": "SWAP"}
+			]
+		}
+	]
+}

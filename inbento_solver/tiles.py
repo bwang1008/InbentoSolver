@@ -17,6 +17,9 @@ class Tile(str, Enum):
     EGG = "EGG"
     EGG_SWIRL = "EGG_SWIRL"
     TOMATO = "TOMATO"
+    SPINACH = "SPINACH"
+    STICKY_RICE = "STICKY_RICE"
+    SWAP = "SWAP"
 
 
 class TilePosition(BaseModel):
