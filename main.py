@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING
 import typer
 from rich import print as rprint
 from rich.progress import Progress, SpinnerColumn, TextColumn
+from typing_extensions import Annotated
 
 from inbento_solver.level import Level
 from inbento_solver.solver import Solver
@@ -20,13 +21,12 @@ app: typer.Typer = typer.Typer(context_settings={"help_option_names": ["-h", "--
 
 
 @app.command()
-def solve(level_path: Path) -> None:
-    """Given a level file, find the list of moves that solve the puzzle.
-
-    TODO: Wrap "Path" in Annotated, but currently bug in Python 3.8:
-        this will be fixed when https://github.com/tiangolo/typer/pull/814
-        is in the next release.
-    """
+def solve(
+    level_path: Annotated[
+        Path, typer.Option(help="JSON description of level to solve")
+    ],
+) -> None:
+    """Given a level file, find the list of moves that solve the puzzle."""
     if not level_path.exists():
         rprint(f"Level file {level_path} does not exist")
         raise typer.Abort
