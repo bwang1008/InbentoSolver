@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Literal
+from typing import TYPE_CHECKING, Literal
 
 from typing_extensions import Self
 
 from inbento_solver.moves.base import MoveBase
-from inbento_solver.tiles import TilePosition
 
 if TYPE_CHECKING:
     from inbento_solver.board import Board
@@ -18,7 +17,6 @@ class LiteralMove(MoveBase):
     """Represents a set of tiles that you can place on the board."""
 
     move_type: Literal["literal"] = "literal"
-    positions: List[TilePosition]  # noqa: UP006
 
     def __str__(self: Self) -> str:
         """Representation of move."""
@@ -46,22 +44,3 @@ class LiteralMove(MoveBase):
             board_copy.tiles[row][col] = tile
 
         return board_copy, None, True
-
-    def rotate_counter_clockwise(self: Self) -> LiteralMove:
-        """Turn the set of tiles in the move."""
-        if self.locked:
-            return self
-
-        max_col: int = max(tile_position.pos[1] for tile_position in self.positions)
-
-        new_positions: list[TilePosition] = []
-        for tile_position in self.positions:
-            pos: tuple[int, int] = tile_position.pos
-            tile: Tile = tile_position.tile
-
-            new_tile_position: TilePosition = TilePosition(
-                pos=(max_col - pos[1], pos[0]), tile=tile
-            )
-            new_positions.append(new_tile_position)
-
-        return LiteralMove(positions=new_positions, locked=self.locked)

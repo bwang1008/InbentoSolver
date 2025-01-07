@@ -3,19 +3,23 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from pydantic import BaseModel
 from typing_extensions import Self
 
+from inbento_solver.tiles import TilePosition
+
 if TYPE_CHECKING:
     from inbento_solver.board import Board
+    from inbento_solver.tiles import Tile
 
 
 class MoveBase(ABC, BaseModel):
     """Base class that represents all moves appliable to a board."""
 
     move_type: str
+    positions: List[TilePosition]  # noqa: UP006
     locked: bool = False
 
     @abstractmethod
@@ -30,11 +34,26 @@ class MoveBase(ABC, BaseModel):
         msg: str = "Not implemented in base class"
         raise NotImplementedError(msg)
 
-    @abstractmethod
     def rotate_counter_clockwise(self: Self) -> MoveBase:
-        """Apply rotation to move."""
-        msg: str = "Not implemented in base class"
-        raise NotImplementedError(msg)
+        """Turn the set of tiles in the move."""
+        if self.locked:
+            return self
+
+        max_col: int = max(tile_position.pos[1] for tile_position in self.positions)
+
+        new_positions: list[TilePosition] = []
+        for tile_position in self.positions:
+            pos: tuple[int, int] = tile_position.pos
+            tile: Tile = tile_position.tile
+
+            new_tile_position: TilePosition = TilePosition(
+                pos=(max_col - pos[1], pos[0]), tile=tile
+            )
+            new_positions.append(new_tile_position)
+
+        return type(self)(
+            move_type=self.move_type, positions=new_positions, locked=self.locked
+        )
 
     def is_locked(self: Self) -> bool:
         """Return attribute locked."""
