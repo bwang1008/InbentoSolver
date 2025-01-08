@@ -8,6 +8,7 @@ from pydantic import Discriminator, Tag
 from typing_extensions import Annotated, TypeAlias
 
 from .literal import LiteralMove
+from .shift import ShiftMove
 from .swap import SwapMove
 
 if TYPE_CHECKING:
@@ -25,6 +26,7 @@ MoveSubtypesT: TypeAlias = Annotated[
     Union[
         Annotated[LiteralMove, Tag("literal")],
         Annotated[SwapMove, Tag("swap")],
+        Annotated[ShiftMove, Tag("shift")],
     ],
     Discriminator(get_move_discriminator_value),
 ]

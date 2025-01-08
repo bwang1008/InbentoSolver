@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, List
 from pydantic import BaseModel
 from typing_extensions import Self
 
+from inbento_solver.direction import Direction
 from inbento_solver.tiles import TilePosition
 
 if TYPE_CHECKING:
@@ -45,9 +46,16 @@ class MoveBase(ABC, BaseModel):
         for tile_position in self.positions:
             pos: tuple[int, int] = tile_position.pos
             tile: Tile = tile_position.tile
+            direction: Direction | None = tile_position.direction
 
             new_tile_position: TilePosition = TilePosition(
-                pos=(max_col - pos[1], pos[0]), tile=tile
+                pos=(max_col - pos[1], pos[0]),
+                tile=tile,
+                direction=(
+                    Direction.rotate_counter_clockwise(direction)
+                    if direction is not None
+                    else None
+                ),
             )
             new_positions.append(new_tile_position)
 

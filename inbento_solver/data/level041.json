@@ -1,0 +1,29 @@
+{
+	"title": "038",
+	"start": {
+		"tiles": [
+			["YELLOWFISH", "YELLOWFISH", "YELLOWFISH"],
+            ["YELLOWFISH", "STICKY_RICE", "YELLOWFISH"]
+		]
+	},
+	"finish": {
+		"tiles": [
+			["YELLOWFISH", "STICKY_RICE", "YELLOWFISH"],
+            ["YELLOWFISH", "YELLOWFISH", "YELLOWFISH"]
+		]
+	},
+	"moves": [
+        {
+			"move_type": "literal",
+			"positions": [
+				{"pos": [0, 0], "tile": "YELLOWFISH"}
+			]
+		},
+        {
+			"move_type": "shift",
+			"positions": [
+				{"pos": [0, 0], "tile": "SHIFT", "direction": "UP"}
+			]
+		}
+	]
+}
